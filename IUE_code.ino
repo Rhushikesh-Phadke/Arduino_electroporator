@@ -2,7 +2,9 @@ int relay = 2;				//Digital pin used to connect to relay
 int footpedal =A0;			//Ananlog pin used to connect to footpedal
 int foot = 0;
 int count=0;				//Counter for number of pulses
-
+int pulses=4;				//Number of Pulses
+int pulse_dur=50;			//Duration of each pulse
+int pulse_inter=500;		//Inter pulse interval
 
 void setup() {
   
@@ -19,15 +21,16 @@ void loop() {
   {
     Serial.println(foot);		
     count=0;
-    while(count<4)					//Change 4 to desired number of pulses
+    while(count<pulses)					//Change 4 to desired number of pulses
     {
       digitalWrite(relay,HIGH);
-      delay(50);					//Duration of each pulse
+      delay(pulse_dur);					
       digitalWrite(relay,LOW);
-      delay(500);					//Inter pulse interval
+      delay(pulse_inter);					
       count=count+1;
     }
   }
   
   
 }
+
